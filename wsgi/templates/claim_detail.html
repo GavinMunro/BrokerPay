@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<p></p>
+<div id="claim" class="home">
+    <h2>Claim Details</h2>
+    <table class="table table-hover">
+    <thead>
+        <th>Name</th>
+        <th>E-mail</th>
+        <th>Phone</th>
+        <th>Course</th>
+        <th>Stage</th>
+        <!-- end user input, start feedback -->
+        <th>Payable</th>
+        <th>Next Census</th>
+        <th>Status</th>
+        <th>Paid RCTI#</th>
+
+    </thead>
+    <tbody>
+        <tr><td></td></tr>
+        {%- for line_item in claim_items %}
+        <tr>
+            <td align="left">{{ line_item.name }}</td>
+            <td align="left">{{ line_item.email }}</td>
+            <td align="left">{{ line_item.phone }}</td>
+            <td align="left">{{ line_item.title }}</td>
+            <td align="left">{{ line_item.stage }}</td>
+            <!-- end user input, start feedback -->
+            <td align="left">{{ "Yes" if line_item.payable else "No" }}</td>
+            <td align="left">{{ line_item.next_census }}</td>
+            <td align="left">{{ line_item.status }}</td>
+            <td align="left">{{ line_item.rcti }}</td>
+
+        </tr>
+        {%- endfor %}
+    </tbody>
+    </table>
+</div>
+{% endblock %}
+
+
+

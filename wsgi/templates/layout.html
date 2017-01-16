@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+    <title>Broker Pay Online Claims</title>
+
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <meta name="description" content="Flask web application">
+    <meta name="author" content="Gavin A.I. Munro">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet">
+    <!-- Styling defaults from bootstrap, customizations from style.css  -->
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <!--
+    JS put at bottom of this file to speed up page loads
+    -->
+    <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+</head>
+<body>
+
+<div id="navbar">
+    {% block navbar %}
+    <div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar-inner">
+                <!--
+                <div class="container text-left">
+                    <button type="button" class="btn btn-navbar" data-toggle="collapse"
+                        data-target=".nav-collapse"> <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                    </button>
+                </div>
+                -->
+                <a class="brand" href="/">Broker Pay</a>
+				<div class="nav-collapse collapse">
+					<ul class="nav">
+						<li class="active"><a href="/">Home</a></li>
+                        {% if g.user.is_authenticated() %}
+                            <li><a href="/new">New Claim</a></li>
+						    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                        {% endif %}
+                        {% if not g.user.is_authenticated()%}
+                            <li><a href="{{ url_for('login') }}">Login</a></li>
+                            <li><a href="{{ url_for('register') }}">Register</a></li>
+                        {% endif %}
+					</ul>
+				</div>
+                <!--/.nav-collapse -->
+
+		</div>
+    </div>
+    {% endblock %}
+</div>
+
+<div id="content">
+    <div class="logo">
+        <img src="{{ url_for('static', filename='img/CA.bmp') }}" align="right" alt="logo"/>
+        <br/>
+    </div>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <ul class=flashes>
+            {% for message in messages %}
+              <li>{{ message }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+    {% endwith %}
+
+    {% block content %}
+    {% endblock %}
+</div>
+
+<div id="footer">
+    {% block footer%}
+    <footer class="copyright">
+        <p>&copy; Copyright <a href="http://careers.edu.au" target="_blank"> Careers Australia</a>.
+        Contact: <a href="mailto:no.reply@careers.edu.au">no.reply@somewhere.au</a>.</p>
+        <p>Web app built using Bootstrap, Flask, SQLAlchemy and PostgreSQL</p>
+        <p><a href="https://www.openshift.com/" target="_blank"><img alt="Powered by OpenShift" src="https://www.openshift.com/sites/default/files/images/powered-transparent-black.png"></a></p>
+    </footer>
+    {% endblock %}
+</div>
+
+
+
+</body>
+</html>

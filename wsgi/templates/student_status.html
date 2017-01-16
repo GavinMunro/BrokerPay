@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="home">
+<h2>Student Status</h2>
+<h3>
+    <br/>
+    <span width="80%">The students listed below have the following data associated with them in our system.
+    <!-- This may be useful to you by giving some indication why a referral was not deemed payable.  -->
+    </span>
+</h3>
+<p>You can upload a .csv list of students and the course you think they're doing to see some extra data on  them.</p>
+</div>
+
+<div class="mymargins">
+    <table class="table table-hover">
+        <thead>
+            <th>Student, Course</th>
+            <th>Referral Source</th>
+            <th>Enrolment Status</th>
+            <th>Enrol By</th>
+            <th>Intake</th>
+            <!-- <th>Start Date</th>
+            <th>End Date</th>   -->
+            <th>Next Census</th>
+            <th>Cancel Reason</th>
+            <th>Paid Invoice#</th>
+        </thead>
+
+        <tbody>
+          <!-- Jinja ninja magic follows  -->
+          {%- for enr in enrols %}
+            <tr>
+                <td>{{ enr.student }}&nbsp; &nbsp;{{ enr.qualification_name}}</td>
+                <td>{{ enr.referral_source }}</td>
+                <td>{{ enr.enrolment_status }}</td>
+                <td>from Course</td>
+                <td>from Course</td>
+                <!-- <td>{{ enr.enrolment_start }}</td>
+                <td>{{ enr.completion_date }}</td> -->
+                <td>calc. from Course</td>
+                <td>{{ enr.cancel_reason }}</td>
+                <td>Rcti#</td>  # Rcti#'s should be 1-1 with claims so could provide link
+            </tr>
+          {%- endfor %}
+
+        </tbody>
+    </table>
+</div>
+
+
+
+    <!--
+    <label for="status">Status</label>
+    <input type="text" name="status" placeholder="enrolled, started, etc."  title="Select student's status"  class="required">
+
+    <label for="start_date">Start Date</label>
+    <input type="date" name="start_date" placeholder="dd/mm/yy" title="Enter cousre start date" class="required date">
+
+    <label for="end_date">End Date</label>
+    <input type="date" name="end_date" placeholder="dd/mm/yy" title="Enter course end date" class="required date">
+
+    <label for="census1">Census Date 1</label>
+    <input type="date" name="census1" placeholder="dd/mm/yy" title="Lookup Census1 date" class="required date">
+
+    <label for="census2">Census Date 2</label>
+    <input type="date" name="census2" placeholder="dd/mm/yy" title="Lookup Census2 date" class="required date">
+
+    <label for="census3">Census Date 3</label>
+    <input type="date" name="census3" placeholder="dd/mm/yy" title="Lookup Census3 date" class="required date">
+
+    <label for="census4">Census Date 4</label>
+    <input type="date" name="census4" placeholder="dd/mm/yy" title="Lookup Census4 date" class="required date">
+    -->
+
+{% endblock %}
+

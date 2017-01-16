@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class = "home">
+<!--
+
+-->
+    <h2>Enter Details for a New Student</h2> <!-- based on "to do" app -->
+
+    <form action="" method="post" class="form-horizontal">
+
+    <div class="control-group">
+        <div class="controls">
+          <input type="text" id="name" name="name" class="input-xlarge"
+            placeholder="Please enter name for student" value="{{ request.form.name }}"
+            required>
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="controls">
+          <input type="text" id="course" name="course" class="input-xlarge"
+            placeholder="Please enter course for student" value="{{ request.form.course }}"
+            required>
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="controls">
+          <input type="text" id="stage" name="stage" class="input-xlarge"
+            placeholder="Please enter stage for student" value="{{ request.form.stage }}"
+            required>
+        </div>
+    </div>
+    <!--
+    <div class="control-group">
+        <div class="controls">
+          <textarea name="text" rows=10 class="input-xlarge" placeholder="describe the claim item" required>{{ request.form.text }}</textarea>
+        </div>
+    </div>
+    -->
+    <div class="control-group">
+        <div class="controls">
+          <input type=checkbox name=done.{{ claim.id }}{{ " checked" if claim.done }}>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <div class="controls">
+          <button type="submit" class="btn btn-success">Lodge Claim</button>
+          <a href="{{ url_for('index') }}">Back to home page</a>
+        </div>
+    </div>
+    </form>
+
+</div>
+{% endblock %}

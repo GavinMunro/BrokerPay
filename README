@@ -1,0 +1,7 @@
+## BrokerPay Application##
+
+A web application built with Python-2.7, Flask-0.10.1,
+SQLAlchemy , PostgreSQL-9.2, and Twitter Bootstrap.
+
+The purpose of the application is to allow third party brokers to lodge to claims for payment of commissions by uploading an Excel file of their referrals for validation against business rules.
+

@@ -1,0 +1,22 @@
+{% extends "index.html" %}
+
+{% block content %}
+<div class="home">
+    <section class="login cf">
+        <form name="login" action="" method="get" accept-charset="utf-8">
+            <ul>
+                <li>
+                    <label id="username">Username</label>
+                    <input type="text" name="username" placeholder="Enter Username" required>
+                </li>
+                <li>
+                    <label id="password">Password</label>
+                    <input type="password" name="password" placeholder="Enter Password" required></li>
+                <li>
+                    <input type="submit" value="Login">
+                </li>
+            </ul>
+        </form>
+    </section>
+</div>
+{% endblock %}

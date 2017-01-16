@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="home">
+    <h2>Referrals Claim</h2>
+    <h3>Upload your claim in CSV format</h3>
+    <p align="center">Please read the <a href="{{ url_for('upload_instrns') }}">help page</a> if you need to.</p>
+
+        <section class="login cf">
+
+            <form class="form-horizontal" action="" name="csv_upload" method="post" enctype="multipart/form-data" accept-charset="utf-8">
+            <ul>
+                <li>
+                    <label id="filename">Filename</label>
+                    <input type="file" name="csv_file" class="" placeholder="Browse to CSV">
+                    <!-- name is needed in the request object dict to avoid KeyError  -->
+                </li>
+                <li>
+                    <span align="right">
+                    <input type="submit" value="Upload"></span>
+                </li>
+            </ul>
+            </form>
+
+        </section>
+
+</div>
+{% endblock %}

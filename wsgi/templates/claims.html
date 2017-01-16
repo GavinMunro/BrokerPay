@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div id="claim" class="home">
+<h2>Your Claims</h2>
+  <table class="table table-hover">
+  <thead>
+        <th>Claim#</th>       <!-- ~ Rcti# in the code -->
+        <th>Filename</th>     <!-- name they gave their .csv -->
+        <th>Uploaded</th>     <!-- Date CSV was uploaded -->
+        <th>Number Claimed</th>    <!-- Number referrals submitted  -->
+        <th>Number Payable</th>    <!-- Number referrals we deem payable -->
+        <th>Rcti#</th>        <!-- Purchase Order -->
+        <th>Processed</th>    <!-- date AP uploaded PO# -->
+        <th>Est. $ Payable</th>    <!-- total amount due to be paid -->
+  </thead>
+  <tbody>
+      <tr><td></td></tr>
+      {%- for line in lines %} <!-- lines is claims join rcti -->
+      <tr class={{ "success" if line.processed }} >
+          <td align="left"><a href="/claims/{{ line.claim_id }}">clm# {{ line.claim_id }}</a></td>
+          <td align="left">{{ line.filename }}</td>
+          <!-- <a href="/uploads/{{ line.filename }}"></a>  -->
+          <!-- style=Jinja{"text-decoration:line-through" if line.processed?}  -->
+          <!-- for when we show claim line-items (students) detail view   -->
+          <td align="left">{{ line.upload_date }}</td> <!-- strftime('%Y-%m-%d %H:%M')  -->
+          <td align="left">{{ line.count }}</td>
+          <td align="left">{{ line.referrals }}</td>
+          <td align="left">{% if line.processed %}
+                               <a href='/rcti/{{line.rcti_id}}'>Rcti# {{line.rcti_id}}</a></td>
+                           {% endif %}
+          <td align="left">{{ line.processed if line.processed}}</td>  <!-- actually rcti.processed  -->
+          <td align="left">{{ "0.00" if not line.amount else line.amount }}</td>     <!-- line.amount is actually the rcti.amount -->
+      </tr>
+      {%- endfor %}
+  </tbody>
+  </table>
+</div>
+<p></p>
+
+<div class="control-group">
+    <p>
+    <div class="controls">
+        <a href="{{ url_for('upload_instrns') }}"  class="home" >Claim Template</a>
+    </div>
+    <br/>
+    <div class="controls">
+        <form method="GET" action="{{ url_for('upload_claim') }}" accept-charset="utf-8">
+            <input type="submit" class="input-xlarge" value="New Claim">
+        </form>
+    </div>
+    </p>
+</div>
+
+{% endblock %}

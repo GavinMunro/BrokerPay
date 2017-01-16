@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="login">
+
+        <div class="control-group">
+            <div class="controls">
+                <label></label>
+                Name: <input type="text" id="name" name="name" class="input-xlarge"
+                placeholder="Please enter name for student" value="" required>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <label></label>
+                Course: <input type="text" id="course" name="course" class="input-xlarge"
+                placeholder="Please enter course for student" value="{{ request.form.course }}" required>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <label></label>
+                Census: <input type="text" id="stage" name="stage" class="input-xlarge"
+                placeholder="Please enter stage for student" value="{{ request.form.stage }}" required>
+            </div>
+        </div>
+        <!-- Need a "get me out here" function to exit as form handler loops back here after submit
+            Once again using a button as a link back to the index page. Possibly not best practice.
+        -->
+        <div class="control-group">
+            <div class="controls">
+            <form method="GET" action="/index" accept-charset="utf-8">
+                <input class="input-xlarge" value="Exit" type="submit">
+            </form>
+            </div>
+        </div>
+        </div>
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="home narrow">
+
+    <h2>MOU Details</h2>
+    <h3>Enter percentages of gross or stage fees we pay at each stage of a course</h3>
+    <p> <span style="color: red">This page is for Careers Australia personnel only.</span>
+        </br>
+        If the percentages for an MOU vary according to the cost bracket that a course falls
+        into, enter the min and max for each bracket and the percent stage for that bracket.
+    </p>
+
+        <section class="claims cf">
+        <p>Hi, welcome back {{ user_in }}</p>
+            <form class="form" id="mou_details" name="mou_details"  action=""
+                  method="post" enctype="multipart/form-data" accept-charset="utf-8">
+            <ul>
+                <li>
+                    <!-- name is needed in the request object dict to avoid KeyError. Not sure we need
+                    <label>'s - might be useful for nav on mobile devices?  -->
+                    MOU<input name="mou" class="" type="" placeholder="MOU number"><br/>
+                    Course Type<input name="course_type" class="" type="" placeholder="CertIII, Diploma, Dbl Dipl"><br/>
+                    Stage<input name="stage" class="" type="" placeholder="Intake, Census1 etc."><br/>
+                    Flat Fee<input name="flat_fee" class="" type="" placeholder="Dollar figure"><br/>
+                    % Gross<input name="percent_gross" class="" type="" placeholder="Decimal 0..1 eg. 0.10"><br/>
+                    When Paid<input name="when" class="" type="" placeholder="2 weeks, etc."><br/>
+                </li>
+                <li><p>These fields must be filled if MOU is by cost bracket</p><br/>
+                    Course&nbsp;<input name="course" class="" type="" placeholder="Course Title"><br/>
+                    Stage&nbsp;<input name="stage" class="" type="" placeholder="Intake, Census1 etc."><br/>
+                    From&nbsp;<input name="bracket_min" class="" type="" placeholder="Dollar figure"><br/>
+                    To $&nbsp;<input name="bracket_max" class="" type="" placeholder="Dollar figure"><br/>
+                    <!-- Enforce the fact brackets must mot overlap in Python or by JS validation? -->
+                    Fee&nbsp;<input name="flat_fee" class="" type="" placeholder="Fee paid to broker"><br/>
+                </li>
+                <li>
+                    <span align="right">
+                    <input type="submit" value="Submit"></span>
+                </li>
+
+                <!--
+                <li><p>These fields will be populated from CASIS</p>
+                    <input name="mou" class="" type="" placeholder="MOU number">
+                    <input name="course" class="" type="" placeholder="Course code">
+                    <input name="contract_code" class="" type="" placeholder="Contract Code">
+                </li>
+                <li><p>These fields will be populated from CASIS</p>
+                    <input name="course" class="" type="" placeholder="Course Title">
+                    <input name="location" class="" type="" placeholder="Which campus">
+                    <input name="stage" class="" type="" placeholder="Intake, Census1 etc.">
+                    <input name="income" class="" type="" placeholder="Fee from student">
+
+                </li>
+                -->
+
+            </ul>
+            <!--
+            <form id="mou" method="post" action="">
+                <fieldset>
+                    <input type="text" name="mou" placeholder="MOU Id" title="Enter MOU Id" class="required">
+                    <input type="text" name="course" placeholder="Course Code"  title="Enter course code"  class="required">
+                    <input type="tel" name="stage" placeholder="eg. Intake, Census1 etc.">
+                    <input type="number" name="fee" placeholder="Dollar figure">
+                    <input type="decimal" name="percent" placeholder="Decimal b/w 0 and 1 eg. 0.10">
+
+                    <input type="url" name="url" placeholder="http://">
+                    <textarea name="filenote"></textarea>
+
+                    <input type="submit" value="Submit">
+                </fieldset>
+            </form>
+            -->
+            </form>
+
+        </section>
+
+</div>
+</div>
+{% endblock %}

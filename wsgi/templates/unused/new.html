@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block body %}
+  <form action="" method=post class="form-horizontal">
+    <h2>Lodge New Claim for Referrals</h2>
+    <div class="control-group">
+        <div class="controls">
+          <input type="text" id="title" name="title" class="input-xlarge"
+            placeholder="Please enter filename for claim" value="{{ request.form.title }}"
+            required>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <div class="controls">
+          <textarea name="text" rows=10 class="input-xlarge" placeholder="Filenote for claim item" required>
+              {{ request.form.text }}</textarea>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <div class="controls">
+          <button type="submit" class="btn btn-success">Lodge Claim</button>
+          <a href="{{ url_for('index') }}">Back to home page</a>
+        </div>
+    </div>
+  </form>
+{% endblock %}

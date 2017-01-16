@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class = "home">
+        <h1 class="font-semi-bold">Broker Pay</h1>
+        <p class="welcome">Welcome to our online payment claim system
+            for third party student referrals from brokers.</p>
+
+        <section class="login cf">
+            <form name="login" action="" method="post" accept-charset="utf-8">
+                <ul>
+                    <li>
+                        <label id="email">Email</label>
+                        <input type="email" name="email" placeholder="yourname@email.com" required>
+                    </li>
+                    <li>
+                        <label id="password">Password</label>
+                        <input type="password" name="password" placeholder="Enter Password" required></li>
+                    <li>
+                        <input type="submit" value="Login">
+                        <!-- The below is something for "remember me" functionality
+                        <input type=hidden value="{{ next or '' }}" name=next>
+                        -->
+                    </li>
+                </ul>
+            </form>
+        </section>
+    </div>
+    <!--
+    <h3>Links</h3>
+    <br/>
+        <a href="{{ url_for('claims') }}">Claims</a>
+
+    <br/>
+        <a href="{{ url_for('student_status') }}">Student Status</a>
+    <br/>
+        <a href="{{ url_for('upload_po_nums') }}">Upload PO#'s</a>
+    <br/>
+        <a href="{{ url_for('update_mou') }}">Update MOU</a>
+    -->
+{% endblock %}
+
+

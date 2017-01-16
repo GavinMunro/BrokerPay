@@ -1,0 +1,144 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<p></p>
+
+<div class="container">
+
+<div class="row">
+    <div class="col-xs-5">
+        </br>
+    </div>
+    <div class="col-xs-5  col-xs-offset-2  text-center">
+        <strong><h3>Recipient Created Tax Invoice</h3></strong>
+    </div>
+</div>
+
+<div class="row ">
+    <div class="col-xs-5">
+        <br>
+        <h4>{{ broker_data.day }} / {{broker_data.month}} / {{ broker_data.year }}</h4>
+        <br>
+    </div>
+    <!--
+    <div class="col-xs-5">
+        <br>
+        <h3><small>Purchase Order# </small></h3>
+        <br>
+    </div>
+    -->
+    <div class="col-xs-5 col-xs-offset-2 text-right">
+        <br>
+        <h3><small>Invoice#: {{ broker_data.inv_num }} </small></h3>
+        <br>
+    </div>
+</div>
+<div class="row">
+<div class="col-xs-5">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4>Recipient: <a href="http://careersaustralia.edu.au">Careers Australia Group Limited</a></h4>
+        </div>
+        <div class="panel-body">
+            <p>
+                100 Brookes Street<br>
+                Fortitude Valley    QLD     4006<br>
+                ABN: 52 122 171 840 <br>
+            </p>
+        </div>
+    </div>
+</div><!-- client details section -->
+
+<div class="col-xs-5 col-xs-offset-2 text-right">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4>Supplier: {{broker_data.supplier}}</h4>
+        </div>
+        <div class="panel-body">
+            <p>
+            {{broker_data.address}}<br>
+            {{broker_data.suburb}}  {{broker_data.state}}  {{broker_data.postcode}}<br>
+            ABN: {{broker_data.abn}} <br>
+            </p>
+        </div>
+    </div>
+</div>
+</div> <!-- /end row -->
+
+<p><strong>REFERRALS MADE BY SUPPLIER TO RECIPIENT</strong></p>
+
+<table class="table table-bordered">
+<thead>
+<tr>
+    <th>
+        <h5>Student, Course and Census</h5>
+    </th>
+    <th class="text-right">
+        <h5><strong>Value</strong></h5>
+    </th>
+    <th class="text-right">
+        <h5><strong>GST</strong></h5>
+    </th>
+    <th class="text-right">
+        <h5><strong>Price</strong></h5>
+    </th>
+</tr>
+</thead>
+<tbody>
+{%- for line in line_items %}
+<tr>
+    <td class="text-left">{{ line.name }} | {{ line.title }} | {{ line.stage }}</td>  <!-- link to student status for this line item? -->
+    <td class="text-right">{{line.comm }}</td> <!-- Value -->
+    <td class="text-right">{{line.gst }}</td> <!-- GST -->
+    <td class="text-right">{{line.price }}</td> <!-- Price -->
+</tr>
+{%- endfor %}
+<tr>
+    <td align="right"><strong>TOTALS : </strong></td>
+    <td class="text-right"><strong>${{ totals_data.value_total }}</strong></td>
+    <td class="text-right"><strong>${{ totals_data.gst_total }}</strong></td>
+    <td class="text-right"><strong>${{ totals_data.price_total }}</strong></td>
+</tr>
+</tbody>
+
+<tfoot>
+</tfoot>
+</table>
+
+    <div class="row text-right">
+        <div class="col-xs-3 col-xs-offset-8">
+            <strong>
+            Total amount payable: ${{ totals_data.price_total }}
+            </strong>
+        </div>
+        <div class="col-xs-2">
+            <strong> <br></strong>
+        </div>
+    </div>
+
+<div class="row ">
+    <h5>
+    </br>
+    </br>
+    The GST shown will form part of the total GST payable by the supplier on the business activity statement (BAS)
+    for the relevant tax period.
+    </h5>
+    <h6>
+    <strong>Written Agreement</strong></br>
+    <span>The recipient and the supplier declare that this agreement relates to the above supplies.
+        The recipient will issue tax invoices in respect of these supplies. The supplier will not issue tax invoices
+        in respect of these supplies. The supplier acknowledges that it is registered for GST and that it will
+        notify the recipient if it ceases to be registered. The recipient acknowledges that it is registered for
+        GST and that it will notify the supplier if it ceases to be registered. Acceptance of this recipient created
+        tax invoice (Rcti) constitutes acceptance of the terms of this written agreement. Both parties to this supply
+        agree that they are parties to an Rcti agreement as outlined in GSTR 2000/10. The supplier agrees to notify
+        the recipient if the supplier does not wish to accept the proposed agreement.</span>
+    </h6>
+</div>
+
+</div> <!-- end row text-right  -->
+</div> <!-- end container  -->
+{% endblock %}
+
+
+

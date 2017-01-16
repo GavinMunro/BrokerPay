@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <div class="home">
+    <p></p>
+    <h2>CSV Upload Help</h2>
+    <p></p>
+    <div class="narrow"><!-- deprecated according to CSS maybe but suits me now -->
+        <p><a href="/downloads/claim_template.csv">Download Claim Template File</a></p>
+        <p>Your file must be in .CSV format or your claim will be rejected. Excel has an option
+            to "Save As" a .csv file but will give a warning about loss of Excel functionality
+            before doing so. See the sample warning message below</p>
+        <p><img src="{{ url_for('static', filename='img/ExcelWarning.png') }}" align="center" alt="Excel warning re. file format"></p>
+        <p>Just ignore this warning and answer "Yes" to save in .CSV format.</p>
+        <p>Please note also that your Excel spreadsheet should conform to the layout of the sample spreadsheet
+            provided. That means the column names must all match and must all be in the same order. The column
+            names should be on the first line of the spreadsheet and your data should start on the second line
+            with no gap.</p>
+        <p></p>
+    </div>
+  </div>
+{% endblock %}
